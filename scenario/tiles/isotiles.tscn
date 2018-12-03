@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/isotiles.png" type="Texture" id=1]
+[ext_resource path="res://scenario/tiles/column.tscn" type="PackedScene" id=2]
+
+[node name="node_2d" type="Node2D" index="0"]
+
+[node name="floor" type="Sprite" parent="." index="0"]
+
+position = Vector2( 40, 70 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 64, 48 )
+_sections_unfolded = [ "Material", "Region", "Visibility" ]
+
+[node name="wall" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 110, 90 )
+normal_map = null
+
+[node name="wall_front" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 270, 90 )
+normal_map = null
+region_rect = Rect2( 260, 7, 64, 88 )
+
+[node name="floor_spike" type="Sprite" parent="." index="3"]
+
+position = Vector2( 180, 70 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 184.904, 49, 64.5, 42 )
+_sections_unfolded = [ "Material", "Region", "Visibility" ]
+
+

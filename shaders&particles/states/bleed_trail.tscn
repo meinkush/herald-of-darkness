@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://shaders&particles/states/bleed_trail.gd" type="Script" id=1]
+
+[node name="bleed" type="Timer" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+script = ExtResource( 1 )
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
+damage_threshold = 0.2
+particle_threshold = 0.4
+
+

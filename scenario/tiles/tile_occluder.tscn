@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 32, 0, 64, 16, 32, 32, 0, 16 )
+
+[node name="light_occluder_2d" type="LightOccluder2D" index="0"]
+
+occluder = SubResource( 1 )
+light_mask = 1
+_sections_unfolded = [ "Material", "Visibility" ]
+
+

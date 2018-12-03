@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenario/areas/room_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenario/tiles/column.tscn" type="PackedScene" id=2]
+
+[node name="room" index="0" instance=ExtResource( 1 )]
+
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0 )
+force_party_entrance = false
+
+[node name="wall" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 0, 0 )
+
+

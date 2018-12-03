@@ -1,0 +1,180 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenario/areas/room_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenario/tiles/traps/spikes.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "room_idle"
+length = 1.6
+loop = true
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("spikes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("spikes2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("spikes3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("spikes4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("spikes5")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("spikes6")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("spikes7")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("spikes8")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[node name="room" index="0" instance=ExtResource( 1 )]
+
+tile_data = PoolIntArray( -65539, 2, 0, -65538, 2, 0, -65537, 2, 0, -3, 2, 0, -1, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0 )
+
+[node name="spikes" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -32, -64 )
+on_pressed = false
+
+[node name="spikes2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( -64, -48 )
+on_pressed = false
+
+[node name="spikes3" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( -96, -32 )
+on_pressed = false
+
+[node name="spikes4" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( -64, -16 )
+on_pressed = false
+
+[node name="spikes5" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( -32, 0 )
+on_pressed = false
+
+[node name="spikes6" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -16 )
+on_pressed = false
+
+[node name="spikes7" parent="." index="6" instance=ExtResource( 2 )]
+
+position = Vector2( 32, -32 )
+on_pressed = false
+
+[node name="spikes8" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -48 )
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+on_pressed = false
+
+[node name="animation_player" type="AnimationPlayer" parent="." index="8"]
+
+root_node = NodePath("..")
+autoplay = "room_idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/room_idle = SubResource( 1 )
+blend_times = [  ]
+
+

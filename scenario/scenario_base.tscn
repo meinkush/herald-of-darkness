@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenario/tiles/isotiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenario/scenario_base.gd" type="Script" id=2]
+[ext_resource path="res://mobs/enemies/caster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mobs/enemies/eyebat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://knight/knight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mobs/enemies/slime.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mobs/enemies/troll.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/hud.tscn" type="PackedScene" id=8]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+#func _process(delta):
+	#update()
+
+#func _draw():
+	#for tile in get_parent().tiles:
+		#draw_circle(tile, 10, Color(\"#fff\"))
+#func _draw():
+	#for node in get_parent().map.values():
+		#draw_circle(get_parent().flatten(get_parent().astar.get_point_position(node)), 10, Color(.2,.2,.2,1))
+	#for node in get_parent().map.keys():
+		#for cell in get_parent().astar.get_point_connections(get_parent().map[node]):
+			#prints(node*get_parent().cell_size,get_parent().flatten(get_parent().astar.get_point_position(cell)))
+			#draw_line(get_parent().flatten(get_parent().astar.get_point_position(get_parent().map[node])),get_parent().flatten(get_parent().astar.get_point_position(cell)),Color(\"#fff\"))"
+
+[node name="Scenario" type="TileMap" index="0"]
+
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = true
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 8
+collision_mask = 0
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Cell", "Collision", "Material", "Transform", "Visibility" ]
+
+[node name="darkness" type="CanvasModulate" parent="." index="0"]
+
+visible = false
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." index="1"]
+
+resources = [ PoolStringArray( "caster", "eyebat", "knight", "slime", "troll" ), [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ] ]
+
+[node name="UnderMarkers" type="YSort" parent="." index="2"]
+
+sort_enabled = true
+
+[node name="OverMarkers" type="YSort" parent="." index="3"]
+
+sort_enabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="HUD" parent="." index="4" instance=ExtResource( 8 )]
+
+margin_right = 839.0
+margin_bottom = 466.0
+
+[node name="path_check" type="Control" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 1 )
+
+[node name="door_lock" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+

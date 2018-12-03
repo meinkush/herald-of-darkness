@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenario/tiles/traps/spikes.gd" type="Script" id=1]
+[ext_resource path="res://textures/spikes.png" type="Texture" id=2]
+
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "pressed"
+length = 0.5
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=3]
+
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hit"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 2, 3 ]
+}
+
+[node name="spikes" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 6
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform" ]
+on_pressed = true
+
+[node name="shape" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -24, 0, 0, 12, 24, 0, 0, -12 )
+
+[node name="sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, -24 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="animation" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/pressed = SubResource( 2 )
+anims/shoot = SubResource( 3 )
+blend_times = [  ]
+
+[connection signal="body_entered" from="." to="." method="pressed"]
+
+

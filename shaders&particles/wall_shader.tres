@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+/*uniform sampler2D back_texture:hint_white;
+
+uniform vec2 player_position;
+
+uniform float view_angle;
+
+uniform vec2 tile_size = vec2(64,32);
+
+uniform vec2 view_entrance;
+
+void vertex(){
+	if (VERTEX.x < 0.0){
+		if (VERTEX.y > 0.0){
+			 view_angle = atan(VERTEX.x+player_position.x,VERTEX.y+player_position.y);
+		}
+	}
+}
+
+void fragment(){
+	if (atan(FRAGCOORD.x-player_position.x,FRAGCOORD.y-player_position.y) > view_angle){
+		COLOR = texture(TEXTURE,UV);
+	} else {
+		COLOR = vec4(0.0,0.0,0.0,0.0);
+	}
+}*/
+
+"
+_sections_unfolded = [ "Resource" ]
+
+[resource]
+
+render_priority = 0
+shader = SubResource( 1 )
+_sections_unfolded = [ "shader_param" ]
+

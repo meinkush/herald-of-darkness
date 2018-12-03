@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://shaders&particles/wall_shader.tres" type="Material" id=1]
+[ext_resource path="res://textures/isotiles.png" type="Texture" id=2]
+[ext_resource path="res://textures/isotiles_normals.png" type="Texture" id=3]
+[ext_resource path="res://scenario/tiles/column.gd" type="Script" id=4]
+[ext_resource path="res://scenario/tiles/tile_shape.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenario/tiles/tile_occluder.tscn" type="PackedScene" id=6]
+
+
+
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -43, 32, -27, 0, -11, -32, -27 )
+
+[node name="wall" type="Sprite" index="0"]
+
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+centered = false
+offset = Vector2( -32, -51 )
+region_enabled = true
+region_rect = Rect2( 103, 38, 64, 67 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="static_body_2d" type="StaticBody2D" parent="." index="0"]
+
+position = Vector2( 0, 27 )
+input_pickable = false
+collision_layer = 8
+collision_mask = 0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "Material", "Transform" ]
+
+[node name="shape" parent="static_body_2d" index="0" instance=ExtResource( 5 )]
+
+shape = SubResource( 1 )
+
+[node name="light_occluder_2d" parent="." index="1" instance=ExtResource( 6 )]
+
+position = Vector2( -32, -16 )
+
+

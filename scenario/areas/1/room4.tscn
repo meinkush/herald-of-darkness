@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenario/areas/room_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenario/tiles/traps/firewall.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("firewall")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spit"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("firewall2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spit"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("firewall3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spit"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("firewall4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spit"
+} ]
+}
+
+[node name="room" instance=ExtResource( 1 )]
+
+tile_data = PoolIntArray( -196611, 0, 0, -196610, 0, 0, -131075, 0, 0, -131074, 0, 0, -65539, 0, 0, -65538, 0, 0, -3, 0, 0, -2, 0, 0, 65533, 0, 0, 65534, 0, 0, 131069, 0, 0, 131070, 0, 0, 196605, 0, 0, 196606, 0, 0, 262141, 0, 0, 262142, 0, 0, 327677, 0, 0, 327678, 0, 0 )
+
+[node name="firewall" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -64 )
+on_pressed = false
+
+[node name="firewall2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( -64, -32 )
+on_pressed = false
+
+[node name="firewall3" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( -128, 0 )
+on_pressed = false
+
+[node name="firewall4" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( -192, 32 )
+on_pressed = false
+
+[node name="animation_player" type="AnimationPlayer" parent="." index="4"]
+
+root_node = NodePath("..")
+autoplay = "idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/idle = SubResource( 1 )
+blend_times = [  ]
+
+
